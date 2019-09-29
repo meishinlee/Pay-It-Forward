@@ -14,7 +14,7 @@ def donate():
 def map(): 
 	return render_template("map.html")
 
-@app.route('messaging')
+@app.route('/messaging')
 def messaging(): #Hello!
 	return render_template("messaging.html")
 	
