@@ -1,1 +1,115 @@
-<h1> meishin </h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="http://fonts.googleapis.com/css?family=Permanent Marker:regular" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Oswald:bold" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Asian Female - Under 18 Crimes</title>
+    <style>
+      body {
+  background-color: #d3d3d3;
+       font-family: 'Oswald', serif;
+       color: black;
+} 
+      h1, h2, h3, h4, h5, h6 {
+    font-family: 'Permanent Marker', Georgia, Times, serif;
+  } 
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 95%;
+        margin: 5%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 95%;
+        margin: 1%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Locations of Crimes for Asian Females Under 18</h1>
+    <div id="map"></div>
+    <script>
+
+      // The following example creates complex markers to indicate crimes near
+      // Sydney, NSW, Australia. Note that the anchor is set to (0,32) to correspond
+      // to the base of the flagpole.
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10.5,
+          center: {lat: 40.730610, lng: -73.935242}
+        });
+
+        setMarkers(map);
+      }
+
+      // Data for the markers consisting of a name, a LatLng and a zIndex for the
+      // order in which these markers should display on top of each other.
+      var crimes = [[10028, 'CHINA JADE', 40.77739828, -73.95209728],
+[10029, 'DEAR MAMA', 40.79232982, -73.9405442],
+[11232, 'KOTTI BERLINER DONER KEBAB', 40.65605362, -74.00733429],
+[11237, 'THE BUSHWICK DINER', 40.70042009, -73.91267624],
+[10011, "DOMINO'S", 40.74366958, -73.99465532],
+[10013, 'SIMPLY BAKERY', 40.71554957, -73.99825407],
+[11218, 'PRIMAVERA RESTAURANT', 40.64515958, -73.9738279],
+[10012, 'GASOLINE ALLEY COFFEE', 40.72555414, -73.99493458],
+[10121, 'GARDEN MARKET/STREET/HEALTH (FA6090)', 40.75065484, -73.99194424],
+[11218, 'PICCOLI', 40.65487599, -73.97334474],
+[11355, 'DENG JI RESTAURANT', 40.75011374, -73.81859875],
+[11229, 'KNAPP STREET BAGEL CAFE', 40.6002801, -73.93408994],
+[10010, 'ABUMI SUSHI', 40.74055013, -73.98132517],
+[11209, 'TUSCANY GRILL', 40.62324399, -74.03115626],
+[11232, 'SUPER POLLO', 40.6500509, -74.00517859],
+[10466, 'KLASSIQUE', 40.88146279, -73.83822292],
+[10001, 'BARN JOO 35', 40.74964137, -73.98540457],
+[10036, 'LA VELA DINING AND BAR', 40.7611044, -73.99809043],
+[11355, 'COFFEE MONSTER', 40.76240112, -73.81457987],
+[10451, "PAPA JOHN'S (STAND 310)", 40.82902843, -73.92849646],
+[11209, 'BEAN POST PUB', 40.62922411, -74.02273253]];
+      function setMarkers(map) {
+        // Adds markers to the map.
+
+        // Marker sizes are expressed as a Size of X,Y where the origin of the image
+        // (0,0) is located in the top left of the image.
+
+        // Origins, anchor positions and coordinates of the marker increase in the X
+        // direction to the right and in the Y direction down.
+        var image = {
+          url: 'http://maps.google.com/mapfiles/ms/micons/caution.png',
+          
+          // This marker is 20 pixels wide by 32 pixels high.
+          size: new google.maps.Size(100 , 175),
+          // The origin for this image is (0, 0).
+          origin: new google.maps.Point(0, 0),
+          // The anchor for this image is the base of the flagpole at (0, 32).
+          anchor: new google.maps.Point(0, 32)
+        };
+        // Shapes define the clickable region of the icon. The type defines an HTML
+        // <area> element 'poly' which traces out a polygon as a series of X,Y points.
+        // The final coordinate closes the poly by connecting to the first coordinate.
+        var shape = {
+          coords: [1, 1, 1, 20, 18, 20, 18, 1],
+          type: 'poly'
+        };
+        for (var i = 0; i < crimes.length; i++) {
+          var crime = crimes[i];
+          var marker = new google.maps.Marker({
+            position: {lat: crime[2], lng: crime[3]},
+            map: map,
+            icon: image,
+            shape: shape,
+            title: crime[0],
+            zIndex: crime[3]
+          });
+        }
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3_xok-TQUL0BagOPW1_CW457yLVb8R5o&callback=initMap">
+    </script>
+    
+  </body>
+</html>
