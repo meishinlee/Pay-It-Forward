@@ -15,6 +15,6 @@ def map():
 	return render_template("map.html")
 
 @app.route('messaging')
-def map(): 
+def messaging(): #Hello!
 	return render_template("messaging.html")
 	
